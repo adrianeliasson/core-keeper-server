@@ -1,0 +1,16 @@
+services:
+  core-keeper:
+    container_name: core-keeper-dedicated
+    image: escaping/core-keeper-dedicated
+    ports:
+      - "$SERVER_PORT:$SERVER_PORT/udp"
+    volumes:
+      - server-files:/home/steam/core-keeper-dedicated
+      - server-data:/home/steam/core-keeper-data
+    env_file:
+      - ./core.env
+    restart: always
+    stop_grace_period: 2m
+volumes:
+    server-files:
+    server-data:
